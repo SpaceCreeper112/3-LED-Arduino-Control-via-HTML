@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Arduino LED Controller</title>
+        <link rel="stylesheet" href="static/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <button class="btn" onclick="activateLED(1)">LED 1</button>
+        <button class="btn" onclick="activateLED(2)">LED 2</button>
+        <button class="btn" onclick="activateLED(3)">LED 3</button>
+        <script>
+            function activateLED(ledNo){
+                fetch('/command', {
+                    method: 'POST',
+                    headers: {"Content-Type": 'text/plain'},
+                    body: String(ledNo)
+                });
+            }
+        </script>
+    </body>
+</html>
